@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auto moreira - Roblox</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Consolas', 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Animação do Texto RGB */
+        .rgb-text {
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rgb-animation 8s linear infinite;
+            margin-bottom: 50px;
+        }
+
+        @keyframes rgb-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 400% 50%;
+            }
+        }
+
+        /* Estilos do Botão RGB */
+        #launchButton {
+            /* Dimensões e aparência */
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            color: #fff;
+            background: #222;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+            transition: color 0.4s;
+            max-width: 90%; /* Responsividade para o texto longo */
+            line-height: 1.3;
+        }
+        
+        /* Efeito de Borda RGB Animada */
+        #launchButton::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 400% 100%;
+            border-radius: 10px;
+            z-index: -1;
+            animation: rgb-border-animation 6s linear infinite;
+        }
+
+        @keyframes rgb-border-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 400% 50%;
+            }
+        }
+        
+        /* Efeito ao passar o mouse (Hover) */
+        #launchButton:hover:not(:disabled) {
+            color: #fff;
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(148, 0, 211, 0.8); /* Brilho roxo ao interagir */
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Estilo do botão desabilitado (após o clique) */
+        #launchButton:disabled {
+            cursor: not-allowed;
+            background: #333;
+            color: #aaa;
+            box-shadow: none;
+        }
+        
+        /* Remove o efeito RGB animado da borda quando desabilitado */
+        #launchButton:disabled::before {
+            content: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="rgb-text">auto método moreira</div>
+
+    <button id="launchButton">
+        INICIAR O MÉTODO<br>(APÓS ESSA PÁGINA O BOTÃO IRÁ TE DIRECIONAR, VOCÊ COLOCAR SEU SERVIDOR)
+    </button>
+
+    <script>
+        document.getElementById('launchButton').addEventListener('click', function() {
+            const button = this;
+            
+            // 1. Desabilita o botão imediatamente para prevenir cliques duplos.
+            button.disabled = true;
+            
+            // O LINK DO SEU SERVIDOR ROBLOX ESTÁ AQUI:
+            const robloxLink = "https://www.roblox.com/share?code=8d59f04c5cda014f81534c3b8d41ccce&type=Server"; 
+
+            // 2. Opcional: Altera o texto do botão para indicar que o processo começou
+            // Mantendo o texto original para não ficar confuso
+            button.innerHTML = "REDIRECIONANDO... (AGUARDE)";
+            
+            // 3. Redireciona a página para o link do Roblox.
+            // O uso do setTimeout garante que o navegador tenha tempo de desabilitar o botão
+            // antes de começar o redirecionamento.
+            setTimeout(() => {
+                window.location.href = robloxLink;
+            }, 500); // Meio segundo de delay.
+        });
+    </script>
+
+</body>
+</html>
+
